@@ -82,7 +82,7 @@ const surveyJson = {
             <div class="welcome-note">
               <p>亲爱的同学：</p>
               <p>您好！本问卷想了解大学生使用生成式 AI 工具时的真实体验，包括 AI 使用情况、同伴比较、学习压力，以及对高级 AI 服务的态度。</p>
-              <p>问卷采用匿名形式，不收集姓名、学号等个人身份信息，所有答案只会用于整体统计分析。问卷约需 6—8 分钟完成，没有正确或错误答案。</p>
+              <p>问卷采用匿名形式，不收集姓名、学号等个人身份信息，所有答案只会用于整体统计分析。问卷约需 4—5 分钟完成，没有正确或错误答案。</p>
               <p class="welcome-note-emphasis">完成后，答案会整理为文本；如果已连接数据表，也会同时匿名保存。</p>
             </div>
           `,
@@ -151,8 +151,6 @@ const surveyJson = {
         matrixQuestion("peerPerceptionMatrix", "请判断以下说法与您的实际感受有多符合。", [
           { number: 15, text: "我身边越来越多的同学开始使用付费或高级 AI 服务。" },
           { number: 16, text: "我经常看到同学使用比我所使用的 AI 功能更强的工具。" },
-          { number: 17, text: "我觉得使用高级 AI 的同学在学习中可能获得更多便利。" },
-          { number: 18, text: "在我的学习环境中，熟练使用 AI 已经逐渐成为一种普遍现象。" },
           { number: 19, text: "我有时会感觉，如果不用更高级的 AI，就可能跟不上周围同学。" },
         ]),
       ],
@@ -164,11 +162,8 @@ const surveyJson = {
       elements: [
         matrixQuestion("socialComparisonMatrix", "请判断以下说法与您的实际感受有多符合。", [
           { number: 20, text: "我会关注其他同学正在使用什么 AI 工具。" },
-          { number: 21, text: "我会比较自己和同学所使用 AI 工具的功能或能力。" },
           { number: 22, text: "当别人使用比我更高级的 AI 时，我会在意这种差距。" },
           { number: 23, text: "看到别人通过 AI 更快完成学习任务时，我会想到自己的学习效率。" },
-          { number: 24, text: "我会比较自己与同学利用 AI 完成学习任务的能力。" },
-          { number: 25, text: "当很多同学都开始使用某种高级 AI 时，我也会产生尝试它的想法。" },
         ]),
       ],
     },
@@ -180,9 +175,7 @@ const surveyJson = {
         matrixQuestion("relativeDisadvantageMatrix", "请判断以下说法与您的实际感受有多符合。", [
           { number: 26, text: "当其他同学拥有更高级的 AI 工具时，我会觉得自己在学习资源上处于劣势。" },
           { number: 27, text: "如果别人可以使用收费 AI，而我只能使用免费 AI，我会产生一定的心理落差。" },
-          { number: 28, text: "看到别人借助高级 AI 明显提高效率时，我有时会觉得自己“吃亏了”。" },
           { number: 29, text: "我认为不同学生获得高级 AI 资源的能力差异，可能影响学习竞争的公平性。" },
-          { number: 30, text: "即使目前使用的免费 AI 已经基本够用，我看到别人拥有更好的 AI 时仍可能感到落差。" },
         ]),
       ],
     },
@@ -194,10 +187,7 @@ const surveyJson = {
         matrixQuestion("learningAnxietyMatrix", "请判断以下说法与您的实际感受有多符合。", [
           { number: 31, text: "我担心不会使用高级 AI 会降低自己的学习竞争力。" },
           { number: 32, text: "看到其他同学熟练使用 AI 时，我有时会感到压力。" },
-          { number: 33, text: "我担心 AI 技术快速发展会让自己逐渐跟不上。" },
-          { number: 34, text: "如果周围同学都开始使用高级 AI，我会担心自己落后。" },
           { number: 35, text: "我有时会因为不知道如何充分利用 AI 而产生焦虑。" },
-          { number: 36, text: "我担心其他学生借助 AI 获得远高于自己的学习效率。" },
         ]),
       ],
     },
@@ -208,8 +198,6 @@ const surveyJson = {
       elements: [
         matrixQuestion("selfEfficacyMatrix", "请判断以下说法与您的实际感受有多符合。", [
           { number: 37, text: "即使没有高级 AI，我也有信心完成大部分学习任务。" },
-          { number: 38, text: "即使其他同学拥有更高级的 AI，我仍相信自己能够学好课程内容。" },
-          { number: 39, text: "我认为自己的学习能力比使用哪一种 AI 更加重要。" },
           { number: 40, text: "当 AI 无法使用时，我仍然能够独立解决大多数学习问题。" },
           { number: 41, text: "使用 AI 后，我对自己解决复杂学习任务的能力更有信心。" },
         ]),
@@ -223,11 +211,8 @@ const surveyJson = {
         matrixQuestion("dependenceMatrix", "请判断以下说法与您的实际情况有多符合。", [
           { number: 42, text: "遇到不会的问题时，我现在的第一反应通常是询问 AI。" },
           { number: 43, text: "如果学习过程中完全不能使用 AI，我会觉得很不方便。" },
-          { number: 44, text: "如果长时间无法使用 AI，我可能会担心自己的学习效率下降。" },
           { number: 45, text: "即使 AI 已经给出了答案，我通常仍会自己思考其中的原因。" },
-          { number: 46, text: "我通常会检查 AI 给出的信息是否可靠。" },
           { number: 47, text: "我会尝试先独立解决问题，再使用 AI 进行辅助。" },
-          { number: 48, text: "我担心过度使用 AI 会削弱自己的独立思考能力。" },
         ]),
       ],
     },
@@ -239,10 +224,7 @@ const surveyJson = {
         matrixQuestion("aiLiteracyMatrix", "请判断以下说法与您的实际情况有多符合。", [
           { number: 49, text: "我能够判断不同 AI 工具分别适合完成哪些任务。" },
           { number: 50, text: "我了解生成式 AI 可能产生错误或虚假信息。" },
-          { number: 51, text: "我能够对 AI 给出的回答进行基本判断和核实。" },
           { number: 52, text: "我能够根据任务需要选择合适的 AI 工具，而不是盲目追求高级版本。" },
-          { number: 53, text: "我不会仅仅因为某种 AI 收费，就认为它一定比免费 AI 更好。" },
-          { number: 54, text: "我能够较理性地判断自己是否真的需要购买高级 AI 服务。" },
         ]),
       ],
     },
@@ -253,11 +235,8 @@ const surveyJson = {
       elements: [
         matrixQuestion("willingnessMatrix", "请判断以下说法与您的实际意愿有多符合。", [
           { number: 55, text: "如果高级 AI 能够明显提高学习效率，我愿意为它付费。" },
-          { number: 56, text: "如果高级 AI 能够明显提高学习质量，我愿意为它付费。" },
           { number: 57, text: "如果身边很多同学都开始使用高级 AI，我购买高级 AI 的意愿会增加。" },
           { number: 58, text: "如果我认为不用高级 AI 会在学习中落后，我更可能选择付费。" },
-          { number: 59, text: "即使免费 AI 基本能满足需要，看到周围同学使用高级 AI 也可能促使我购买。" },
-          { number: 60, text: "如果周围同学都没有使用高级 AI，我购买它的意愿可能会降低。" },
         ]),
       ],
     },
@@ -278,9 +257,7 @@ const surveyJson = {
         },
         matrixQuestion("scenarioMatrix", "在这种情况下，请判断以下说法与您的感受有多符合。", [
           { number: 61, text: "我会担心自己的作业质量不如其他同学。" },
-          { number: 62, text: "我会觉得自己在学习工具方面处于劣势。" },
           { number: 63, text: "我会产生购买高级 AI 的想法。" },
-          { number: 64, text: "即使自己的免费 AI 暂时够用，我仍可能想升级到高级 AI。" },
           { number: 65, text: "我会首先了解高级 AI 是否真的适合自己的需求，而不是直接购买。" },
         ]),
       ],
@@ -318,6 +295,34 @@ const surveyJson = {
     },
   ],
 };
+
+// Keep the original q-names for Supabase compatibility, but show continuous
+// question numbers after the matrix items are shortened.
+function renumberVisibleQuestions(pages) {
+  let displayNumber = 1;
+
+  pages.forEach((page) => {
+    page.elements.forEach((element) => {
+      if (element.type === "html") {
+        return;
+      }
+
+      if (element.type === "matrix") {
+        element.rows = element.rows.map((row) => ({
+          ...row,
+          text: `${displayNumber++}. ${row.text.replace(/^\d+\.\s*/, "")}`,
+        }));
+        return;
+      }
+
+      if (typeof element.title === "string" && /^\d+\.\s*/.test(element.title)) {
+        element.title = `${displayNumber++}. ${element.title.replace(/^\d+\.\s*/, "")}`;
+      }
+    });
+  });
+}
+
+renumberVisibleQuestions(surveyJson.pages);
 
 const answerSectionByElementName = new Map();
 const flattenedElements = surveyJson.pages.flatMap((page) => {
@@ -392,14 +397,22 @@ function buildAnswerText(survey) {
   let currentSection = "";
   survey.pages.forEach((page) => {
     page.elements.forEach((element) => {
-      if (element.type === "html") {
-        return;
-      }
-
       const section = answerSectionByElementName.get(element.name);
       if (section && section !== currentSection) {
+        if (lines[lines.length - 1] !== "") {
+          lines.push("");
+        }
         lines.push(`【${section}】`);
+        lines.push("");
         currentSection = section;
+      }
+
+      if (element.type === "html") {
+        if (element.name === "welcomeNote" || element.name === "scenarioNote") {
+          lines.push(`${element.name}：未填写`);
+          lines.push("");
+        }
+        return;
       }
 
       const question = survey.getQuestionByName(element.name);

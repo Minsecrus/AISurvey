@@ -8,6 +8,9 @@ create table if not exists public.survey_responses (
   answer_text text not null
 );
 
+-- answers is intentionally JSONB so shortened questionnaire versions can keep
+-- the same table and the stable q-names of retained items.
+
 alter table public.survey_responses enable row level security;
 
 revoke all on table public.survey_responses from anon, authenticated;
