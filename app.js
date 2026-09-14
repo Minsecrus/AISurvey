@@ -17,7 +17,9 @@ const aiTools = [
   { value: "ChatGPT", text: "ChatGPT" },
   { value: "Claude", text: "Claude" },
   { value: "Gemini", text: "Gemini" },
-  { value: "Copilot", text: "Copilot" },
+  { value: "Grok", text: "Grok" },
+  { value: "GLM", text: "GLM" },
+  { value: "Muse Spark", text: "Muse Spark" },
 ];
 
 function matrixQuestion(name, title, items, description) {
@@ -138,7 +140,7 @@ const surveyJson = {
         },
         choiceQuestion("q12", "12. 您目前主要使用哪类 AI 服务？", ["只使用免费 AI", "主要使用免费 AI，偶尔使用付费/高级 AI", "免费和付费 AI 均经常使用", "主要使用付费或高级 AI", "不清楚"]),
         choiceQuestion("q13", "13. 您是否曾经为生成式 AI 付费？", ["从未", "曾经付费，但目前没有", "目前正在付费使用", "使用他人账号/共享账号", "其他"]),
-        choiceQuestion("q14", "14. 您每月用于 AI 工具的实际支出约为", ["0元", "1—50元", "51—100元", "101—200元", "200元以上"]),
+        choiceQuestion("q14", "14. 您每月用于 AI 工具的实际支出约为", ["0", "1—200元", "200—1400元", "1400元以上"]),
       ],
     },
     {
