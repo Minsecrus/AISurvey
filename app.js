@@ -511,7 +511,7 @@ function enhanceSelectBaseQuestion(questionElement) {
       );
       textElements.forEach((element) => {
         if (selected) {
-          element.style.setProperty("color", "#fff", "important");
+          element.style.setProperty("color", "var(--ink)", "important");
         } else {
           element.style.removeProperty("color");
         }

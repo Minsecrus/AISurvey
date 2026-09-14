@@ -179,9 +179,14 @@ button {
   min-height: 3rem;
   margin: 0.25rem 0;
   padding: 0.55rem 0.75rem;
+  color: var(--ink);
   border: 1px solid #dfe2e8;
   border-radius: 0.7rem;
   background: #fff;
+}
+
+#surveyContainer .sd-selectbase__item * {
+  color: var(--ink);
 }
 
 #surveyContainer .sd-selectbase__item .sd-item__decorator {
@@ -189,20 +194,20 @@ button {
 }
 
 #surveyContainer .sd-selectbase__item.sd-item--checked {
-  color: #fff;
-  border-color: var(--teal);
-  background: var(--teal);
+  color: var(--ink);
+  border-color: #a9cbea;
+  background: #dceeff;
 }
 
 #surveyContainer .sd-selectbase__item.sd-item--checked .sd-item__text {
-  color: #fff !important;
+  color: var(--ink) !important;
 }
 
 #surveyContainer .sd-selectbase__item.survey-choice-selected,
 #surveyContainer .sd-selectbase__item.survey-choice-selected:hover,
 #surveyContainer .sd-selectbase__item.survey-choice-selected *,
 #surveyContainer .sd-selectbase__item.survey-choice-selected:hover * {
-  color: #fff !important;
+  color: var(--ink) !important;
 }
 
 #surveyContainer .sd-selectbase__item:hover {
@@ -211,34 +216,34 @@ button {
 }
 
 #surveyContainer .sd-selectbase__item.sd-item--checked:hover {
-  color: #fff;
-  border-color: var(--teal);
-  background: var(--teal);
+  color: var(--ink);
+  border-color: #a9cbea;
+  background: #dceeff;
 }
 
 #surveyContainer .sd-selectbase__item.sd-item--checked:hover .sd-item__text {
-  color: #fff !important;
+  color: var(--ink) !important;
 }
 
 #surveyContainer .sd-selectbase__item.survey-choice-selected,
 #surveyContainer .sd-selectbase__item.survey-choice-selected:hover {
-  border-color: var(--teal);
-  background: var(--teal);
+  border-color: #a9cbea;
+  background: #dceeff;
 }
 
 #surveyContainer .sd-selectbase__item.sd-radio--checked,
 #surveyContainer .sd-selectbase__item.sd-checkbox--checked,
 #surveyContainer .sd-selectbase__item.sd-radio--checked *,
 #surveyContainer .sd-selectbase__item.sd-checkbox--checked * {
-  color: #fff !important;
+  color: var(--ink) !important;
 }
 
 #surveyContainer .sd-selectbase__item.sd-radio--checked,
 #surveyContainer .sd-selectbase__item.sd-checkbox--checked,
 #surveyContainer .sd-selectbase__item:has(.sd-item__control:checked),
 #surveyContainer .sd-selectbase__item:has(.sd-item__control:checked):hover {
-  border-color: var(--teal);
-  background: var(--teal);
+  border-color: #a9cbea;
+  background: #dceeff;
 }
 
 #surveyContainer .sd-selectbase__item .sd-item__decorator {
