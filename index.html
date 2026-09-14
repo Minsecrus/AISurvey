@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="大学生生成式 AI 使用、社会比较与学习心理匿名调查问卷"
+    />
+    <title>生成式 AI 学习体验调查</title>
+
+    <link rel="preconnect" href="https://unpkg.com" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/survey-core/survey-core.min.css"
+    />
+    <link rel="stylesheet" href="./styles.css?v=20260914-copy-home-v1" />
+
+    <script src="https://unpkg.com/survey-core/survey.core.min.js" defer></script>
+    <script src="https://unpkg.com/survey-js-ui/survey-js-ui.min.js" defer></script>
+    <script src="./app.js?v=20260914-copy-home-v1" defer></script>
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="survey-card" aria-label="调查问卷">
+        <div id="surveyContainer"></div>
+        <span id="copyStatus" class="copy-status" role="status" aria-live="polite" hidden></span>
+      </section>
+    </main>
+  </body>
+</html>
