@@ -14,18 +14,20 @@
       rel="stylesheet"
       href="https://unpkg.com/survey-core/survey-core.min.css"
     />
-    <link rel="stylesheet" href="./styles.css?v=20260914-choice-light-v2" />
+    <link rel="stylesheet" href="./styles.css?v=20260914-copy-status-v5" />
 
     <script src="https://unpkg.com/survey-core/survey.core.min.js" defer></script>
     <script src="https://unpkg.com/survey-js-ui/survey-js-ui.min.js" defer></script>
-    <script src="./app.js?v=20260914-choice-light-v2" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+    <script src="./supabase-config.js?v=20260914-project1" defer></script>
+    <script src="./app.js?v=20260914-supabase-v1" defer></script>
   </head>
   <body>
     <main class="app-shell">
       <section class="survey-card" aria-label="调查问卷">
         <div id="surveyContainer"></div>
-        <span id="copyStatus" class="copy-status" role="status" aria-live="polite" hidden></span>
       </section>
+      <span id="copyStatus" class="copy-status" role="status" aria-live="polite" hidden></span>
     </main>
   </body>
 </html>

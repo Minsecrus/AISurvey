@@ -54,7 +54,7 @@ const surveyJson = {
   progressBarType: "pages",
   showQuestionNumbers: "off",
   showNavigationButtons: "bottom",
-  completeText: "复制答案",
+  completeText: "提交并复制答案",
   requiredText: "",
   requiredError: "请完成必填题。",
   questionErrorLocation: "bottom",
@@ -83,7 +83,7 @@ const surveyJson = {
               <p>亲爱的同学：</p>
               <p>您好！本问卷想了解大学生使用生成式 AI 工具时的真实体验，包括 AI 使用情况、同伴比较、学习压力，以及对高级 AI 服务的态度。</p>
               <p>问卷采用匿名形式，不收集姓名、学号等个人身份信息，所有答案只会用于整体统计分析。问卷约需 6—8 分钟完成，没有正确或错误答案。</p>
-              <p class="welcome-note-emphasis">本页面没有后端提交功能。完成后，答案会在浏览器中整理为文本，你可以手动复制保存。</p>
+              <p class="welcome-note-emphasis">完成后，答案会整理为文本；如果已连接数据表，也会同时匿名保存。</p>
             </div>
           `,
         },
@@ -564,18 +564,70 @@ async function copyTextToClipboard(text) {
   }
 }
 
-function setCopyStatus(copyStatus, copied) {
+function setCopyStatus(copyStatus, result) {
+  const { configured, submitted } = result;
+  const copySucceeded = result.copied;
+
   copyStatus.hidden = false;
-  copyStatus.textContent = copied
-    ? "答案已复制到剪贴板"
-    : "复制失败，请再次点击“复制答案”";
-  copyStatus.style.color = copied ? "var(--teal)" : "#b35c45";
+  copyStatus.removeAttribute("hidden");
+  copyStatus.dataset.state = configured && !submitted ? "error" : copySucceeded ? "success" : "error";
+
+  if (configured && submitted && copySucceeded) {
+    copyStatus.textContent = "提交成功，复制成功";
+  } else if (configured && submitted) {
+    copyStatus.textContent = "提交成功";
+  } else if (configured && copySucceeded) {
+    copyStatus.textContent = "提交失败，复制成功";
+  } else if (copySucceeded) {
+    copyStatus.textContent = "复制成功";
+  } else {
+    copyStatus.textContent = configured
+      ? "提交失败，请再次点击“提交并复制答案”"
+      : "复制失败，请再次点击“提交并复制答案”";
+  }
+}
+
+function getSupabaseClient() {
+  const config = window.SUPABASE_CONFIG || {};
+  const supabaseLibrary = window.supabase;
+
+  if (!config.url || !config.publishableKey || !supabaseLibrary?.createClient) {
+    return null;
+  }
+
+  return supabaseLibrary.createClient(config.url, config.publishableKey);
+}
+
+async function submitSurveyResponse(survey, answerText) {
+  const config = window.SUPABASE_CONFIG || {};
+  const configured = Boolean(config.url && config.publishableKey);
+  if (!configured) {
+    return { configured: false, submitted: false };
+  }
+
+  try {
+    const client = getSupabaseClient();
+    if (!client) {
+      return { configured: true, submitted: false };
+    }
+
+    const { error } = await client.from("survey_responses").insert({
+      submitted_at: new Date().toISOString(),
+      answers: survey.data,
+      answer_text: answerText,
+    });
+
+    return { configured: true, submitted: !error };
+  } catch (error) {
+    return { configured: true, submitted: false };
+  }
 }
 
 function initialiseSurvey() {
   const survey = new Survey.Model(surveyJson);
   const surveyContainer = document.getElementById("surveyContainer");
   const copyStatus = document.getElementById("copyStatus");
+  let submissionInFlight = false;
 
   survey.onAfterRenderQuestion.add((sender, options) => {
     if (options.question.getType() === "matrix") {
@@ -585,19 +637,34 @@ function initialiseSurvey() {
     }
   });
 
-  survey.onComplete.add(async (sender) => {
+  survey.onCompleting.add((sender, options) => {
     if (sender.data.consent !== "yes") {
       return;
     }
 
-    setCopyStatus(copyStatus, await copyTextToClipboard(buildAnswerText(sender)));
+    // “提交并复制答案” is the SurveyJS complete action. Cancel the built-in
+    // completion view so the questionnaire stays visible after submitting.
+    options.allowComplete = false;
+
+    if (submissionInFlight) {
+      return;
+    }
+
+    submissionInFlight = true;
+    const answerText = buildAnswerText(sender);
+    Promise.all([
+      submitSurveyResponse(sender, answerText),
+      copyTextToClipboard(answerText),
+    ])
+      .then(([submission, copied]) => {
+        setCopyStatus(copyStatus, { ...submission, copied });
+      })
+      .finally(() => {
+        submissionInFlight = false;
+      });
   });
 
   survey.render(surveyContainer);
-  const actionBar = surveyContainer.querySelector(".sd-action-bar, .sd-navigation");
-  if (actionBar) {
-    actionBar.append(copyStatus);
-  }
 }
 
 document.addEventListener("DOMContentLoaded", initialiseSurvey);
