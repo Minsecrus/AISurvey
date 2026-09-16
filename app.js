@@ -503,6 +503,8 @@ function enhanceMatrixQuestion(questionElement, question) {
     return;
   }
 
+  // Keep the SurveyJS matrix in the DOM so its radio inputs remain the source
+  // of truth. The native table is hidden by its stable SurveyJS class in CSS.
   nativeTable.classList.add("matrix-native-table");
   nativeTable.setAttribute("aria-hidden", "true");
   nativeTable.insertAdjacentElement("afterend", customLayout);

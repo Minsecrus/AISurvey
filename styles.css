@@ -252,17 +252,15 @@ button {
   background: var(--teal);
 }
 
+#surveyContainer .sd-matrix__table,
 #surveyContainer .matrix-native-table {
-  position: absolute !important;
-  width: 1px !important;
-  height: 1px !important;
-  margin: -1px !important;
-  padding: 0 !important;
-  overflow: hidden !important;
-  border: 0 !important;
-  clip: rect(0 0 0 0) !important;
-  clip-path: inset(50%) !important;
-  white-space: nowrap !important;
+  /*
+   * The original table is only used to keep SurveyJS' radio inputs and
+   * validation state working. Hiding the whole table avoids its headers and
+   * cells reappearing when SurveyJS applies its narrow-screen layout.
+   * The custom buttons still update the inputs through input.click().
+   */
+  display: none !important;
 }
 
 #surveyContainer .matrix-custom-layout {
