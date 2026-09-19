@@ -20,7 +20,7 @@ npx serve .
 - 问卷末尾按钮为“提交并复制答案”；点击后会尝试匿名写入 Supabase，同时复制答案文本，并显示操作结果。
 - 没有配置 Supabase 时，页面仍可作为纯静态问卷使用，只复制答案，不会上传数据。
 
-矩阵题缩减后保留 28 个核心条目。保留题目的内部 `q` 名称不变，因此 Supabase 现有的 `answers` JSONB 和 `answer_text` 文本字段无需迁移，旧答卷仍可保留。
+矩阵题缩减后保留 25 个核心条目。保留题目的内部 `q` 名称不变，因此 Supabase 现有的 `answers` JSONB 和 `answer_text` 文本字段无需迁移，旧答卷仍可保留。
 
 ## 配置 Supabase
 
